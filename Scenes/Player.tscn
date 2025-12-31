@@ -1,0 +1,74 @@
+[gd_scene load_steps=8 format=3 uid="uid://dkpl3oi25vcx"]
+
+[ext_resource type="Script" uid="uid://tovyfrkonlpt" path="res://Scripts/PlayerController.gd" id="1_lfvdv"]
+[ext_resource type="PackedScene" uid="uid://b0c6mdw6rjo04" path="res://Assets/Model/FergusonovaNaked.glb" id="2_7ei5c"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_k81ir"]
+height = 1.6
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lfvdv"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7ei5c"]
+animation = &"Walk"
+
+[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_k81ir"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_lfvdv")
+blend_point_0/pos = 0.0
+blend_point_1/node = SubResource("AnimationNodeAnimation_7ei5c")
+blend_point_1/pos = 1.0
+min_space = 0.0
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_ltbwf"]
+graph_offset = Vector2(-289, 2)
+nodes/BlendSpace1D/node = SubResource("AnimationNodeBlendSpace1D_k81ir")
+nodes/BlendSpace1D/position = Vector2(20, 120)
+node_connections = [&"output", 0, &"BlendSpace1D"]
+
+[node name="CharacterBody3D" type="CharacterBody3D"]
+script = ExtResource("1_lfvdv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
+shape = SubResource("CylinderShape3D_k81ir")
+
+[node name="FergusonovaNaked" parent="." instance=ExtResource("2_7ei5c")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+
+[node name="Skeleton3D" parent="FergusonovaNaked/Armature" index="0"]
+bones/0/position = Vector3(0.06739187, -0.29518992, -9.273093)
+bones/0/rotation = Quaternion(-0.711876, -0.022366466, -0.040760364, 0.7007646)
+bones/1/rotation = Quaternion(-0.0038932231, -0.012279815, 0.023392392, 0.9996434)
+bones/2/rotation = Quaternion(-0.0019244619, -0.0015264282, 0.05183194, 0.9986528)
+bones/3/rotation = Quaternion(-0.0019448069, 0.003913383, 0.051223498, 0.99867773)
+bones/4/rotation = Quaternion(0.0196027, -0.0022489754, -0.018795127, 0.9996287)
+bones/5/rotation = Quaternion(0.012990237, 0.004931027, -0.07135356, 0.9973543)
+bones/7/rotation = Quaternion(-0.61930233, -0.42748916, 0.450452, -0.48042756)
+bones/8/rotation = Quaternion(0.61549157, 0.0024386714, -0.08445363, 0.7836018)
+bones/9/rotation = Quaternion(0.040283404, -0.0053774873, 0.09964665, 0.9941926)
+bones/11/rotation = Quaternion(0.5755797, -0.47681487, 0.5033704, 0.43355948)
+bones/12/rotation = Quaternion(0.49320054, 0.0006847072, 0.015383212, 0.86977935)
+bones/13/rotation = Quaternion(0.04150588, 0.0063673416, -0.12741873, 0.99095976)
+bones/15/rotation = Quaternion(0.1127733, 0.17197193, 0.9698908, -0.13046014)
+bones/16/rotation = Quaternion(-0.24800293, -0.07673505, 0.045026455, 0.96466523)
+bones/17/rotation = Quaternion(0.545069, 0.011464444, -0.116178475, 0.83022344)
+bones/18/rotation = Quaternion(0.26794258, -0.014748758, 0.0045500817, 0.96331125)
+bones/20/rotation = Quaternion(-0.03966025, 0.012001858, 0.9958088, -0.081535764)
+bones/21/rotation = Quaternion(-0.12267176, 0.047746945, 0.014896211, 0.9911862)
+bones/22/rotation = Quaternion(0.5738111, -0.11718941, -0.020520829, 0.8103002)
+bones/23/rotation = Quaternion(0.26585752, 0.0109746475, -0.0035471253, 0.96394336)
+
+[node name="AnimationTree" type="AnimationTree" parent="FergusonovaNaked"]
+tree_root = SubResource("AnimationNodeBlendTree_ltbwf")
+anim_player = NodePath("../AnimationPlayer")
+parameters/BlendSpace1D/blend_position = 0.0
+
+[node name="SpringArmPivot" type="Node3D" parent="."]
+
+[node name="SpringArm3D" type="SpringArm3D" parent="SpringArmPivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+spring_length = 1.5
+
+[node name="Camera3D" type="Camera3D" parent="SpringArmPivot/SpringArm3D"]
+
+[editable path="FergusonovaNaked"]

@@ -1,0 +1,53 @@
+[gd_scene load_steps=4 format=3 uid="uid://bigdhfgu1yt8g"]
+
+[ext_resource type="PackedScene" uid="uid://b0c6mdw6rjo04" path="res://Assets/Model/FergusonovaNaked.glb" id="1_6ioyt"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6ioyt"]
+animation = &"YMCA_Dance"
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_t5vt1"]
+graph_offset = Vector2(-337.79977, 32.71269)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_6ioyt")
+nodes/Animation/position = Vector2(0, 160)
+node_connections = [&"output", 0, &"Animation"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="FergusonovaNaked" parent="." instance=ExtResource("1_6ioyt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.12103152, 0, -0.21179152)
+
+[node name="Skeleton3D" parent="FergusonovaNaked/Armature" index="0"]
+bones/0/position = Vector3(-0.033314917, -0.6381364, -8.224356)
+bones/0/rotation = Quaternion(-0.7617267, 0.02983374, -0.022682527, 0.6468137)
+bones/1/rotation = Quaternion(0.03824207, -0.02219393, 0.0023082742, 0.99901944)
+bones/2/rotation = Quaternion(0.009304099, -0.006209823, 0.0021421285, 0.9999352)
+bones/3/rotation = Quaternion(0.009266169, -0.0062223603, 0.0022534921, 0.99993527)
+bones/4/rotation = Quaternion(0.09838308, 0.00093770074, -0.0059465, 0.9951305)
+bones/5/rotation = Quaternion(0.07059597, -0.0020391236, -0.017052481, 0.99735725)
+bones/7/rotation = Quaternion(-0.6153922, -0.5951078, 0.38436514, -0.3455469)
+bones/8/rotation = Quaternion(-0.35109517, -0.5807559, 0.41199374, 0.60804284)
+bones/9/rotation = Quaternion(0.00015406394, -0.060782045, 0.53851134, 0.84042317)
+bones/11/rotation = Quaternion(0.6631419, -0.5806175, 0.20053242, 0.42768314)
+bones/12/rotation = Quaternion(-0.4134048, 0.61739963, -0.2758184, 0.6097856)
+bones/13/rotation = Quaternion(0.046817455, 0.118179634, -0.4825078, 0.8666187)
+bones/15/rotation = Quaternion(0.01699625, 0.18581757, 0.9747044, -0.12302149)
+bones/16/rotation = Quaternion(-0.5239416, -0.06459839, -0.029095935, 0.84880257)
+bones/17/rotation = Quaternion(0.70059186, 0.059387755, -0.06565261, 0.7080494)
+bones/18/rotation = Quaternion(0.29476842, -0.009963183, 0.00659479, 0.95549405)
+bones/20/rotation = Quaternion(-0.2072553, 0.23045887, 0.94327873, 0.11899307)
+bones/21/rotation = Quaternion(-0.5000746, 0.030689785, -0.122669324, 0.8567005)
+bones/22/rotation = Quaternion(0.66007173, -0.021035623, 0.13878967, 0.7379704)
+bones/23/rotation = Quaternion(0.23434138, 0.016454061, -0.0010917155, 0.97201455)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.85692835, 1.2139541)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.87445045, 0.48511487, 0, -0.48511487, 0.87445045, 0, 3.142662, 2.5291672)
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+root_node = NodePath("../FergusonovaNaked")
+tree_root = SubResource("AnimationNodeBlendTree_t5vt1")
+anim_player = NodePath("../FergusonovaNaked/AnimationPlayer")
+
+[editable path="FergusonovaNaked"]

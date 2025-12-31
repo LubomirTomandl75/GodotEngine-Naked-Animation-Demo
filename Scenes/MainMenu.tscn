@@ -1,0 +1,75 @@
+[gd_scene load_steps=4 format=3 uid="uid://cvwy23c17egfq"]
+
+[ext_resource type="PackedScene" uid="uid://bigdhfgu1yt8g" path="res://Scenes/DanceWomen.tscn" id="1_853f1"]
+[ext_resource type="Texture2D" uid="uid://brcf3vk2h8hsj" path="res://Assets/Logo.png" id="2_8saeu"]
+[ext_resource type="Script" uid="uid://q08536y4gvso" path="res://Scripts/MainMenu.gd" id="3_8saeu"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Node3D"]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -720.0
+offset_top = -256.0
+offset_bottom = 256.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="SubViewport" type="SubViewport" parent="Node3D/SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(720, 720)
+render_target_update_mode = 4
+
+[node name="Node3D" parent="Node3D/SubViewportContainer/SubViewport" instance=ExtResource("1_853f1")]
+
+[node name="Logo" type="Sprite2D" parent="."]
+position = Vector2(423.99997, 240)
+scale = Vector2(0.21186441, 0.21186441)
+texture = ExtResource("2_8saeu")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("3_8saeu")
+
+[node name="Button_Start" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 336.0
+offset_top = 384.0
+offset_right = 488.0
+offset_bottom = 415.0
+text = "START"
+
+[node name="Button_Quit" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 336.0
+offset_top = 432.0
+offset_right = 488.0
+offset_bottom = 463.0
+text = "QUIT"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -344.0
+offset_top = -32.0
+offset_right = -11.0
+offset_bottom = -9.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "© Lubomír Tomandl - Angry Developer Studio"
+
+[connection signal="pressed" from="Control/Button_Start" to="Control" method="_on_button_start_pressed"]
+[connection signal="pressed" from="Control/Button_Quit" to="Control" method="_on_button_quit_pressed"]

@@ -1,0 +1,62 @@
+[gd_scene load_steps=7 format=3 uid="uid://2m7ssn77342h"]
+
+[ext_resource type="Texture2D" uid="uid://bbqvovy3rwnmd" path="res://Assets/SkyBox.png" id="1_8gbba"]
+[ext_resource type="PackedScene" uid="uid://dkpl3oi25vcx" path="res://Scenes/Player.tscn" id="1_jjgbg"]
+[ext_resource type="PackedScene" uid="uid://bwg37bap251lt" path="res://Assets/World.glb" id="2_bo1nx"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_jjvhh"]
+panorama = ExtResource("1_8gbba")
+
+[sub_resource type="Sky" id="Sky_kry3j"]
+sky_material = SubResource("PanoramaSkyMaterial_jjvhh")
+
+[sub_resource type="Environment" id="Environment_bo1nx"]
+background_mode = 2
+sky = SubResource("Sky_kry3j")
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_bo1nx")
+
+[node name="CharacterBody3D" parent="." instance=ExtResource("1_jjgbg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
+
+[node name="World" parent="." instance=ExtResource("2_bo1nx")]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.70710677, -0.61237246, 0.35355335, 0, 0.49999997, 0.86602545, -0.70710677, -0.61237246, 0.35355335, 10, 8, 10)
+light_energy = 0.98
+shadow_enabled = true
+sky_mode = 1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="FPSLabel" type="Label" parent="CanvasLayer"]
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 91.0
+offset_bottom = 58.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 24
+text = "FPS: 0"
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer2"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -360.0
+offset_top = -32.0
+offset_right = -9.0
+offset_bottom = -9.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "© Lubomír Tomandl - Angry Developer Studio"
