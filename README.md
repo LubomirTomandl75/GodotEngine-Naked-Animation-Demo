@@ -1,7 +1,7 @@
 # Naked Animation Demo
 > Jednoduchá technická ukázka realizace pohybu 3D postavy z pohledu třetí osoby (TPS) v Godot Engine. Tento projekt demonstruje kompletní cestu od generování postavy přes rigging a animaci až po finální implementaci fyzikálního pohybu.
 
-![Make Human Community](Screenshot\Preview.png)
+![Make Human Community](Screenshot/Preview.png)
 
 ## Jak spustit
 1. Stáhněte si projekt a otevřete jej v **Godot Engine 4.5.1**.
@@ -15,7 +15,7 @@ Prvním krokem bylo vytvoření základní anatomie postavy.
 
 * **Výstup:** Export 3D modelu v základní pozici `T-Pose`.
 * **Nastavení:** Exportováno do formátu `FBX` bez kostry (Rigging byl ponechán na Mixamo).
-* **Web:** [makehumancommunity.org](Screenshot\http://www.makehumancommunity.org)
+* **Web:** [makehumancommunity.org](http://www.makehumancommunity.org)
 
 ---
 
@@ -27,7 +27,7 @@ Online nástroj pro automatický rigging a aplikaci pohybových dat (MoCap).
 2. **Idle Animation:** Animace postoje (exportováno bez textur – *Without Skin*).
 3. **Walk Animation:** Animace chůze (exportováno bez textur – *Without Skin*).
 
-* **Web:** [mixamo.com](Screenshot\https://www.mixamo.com)
+* **Web:** [mixamo.com](https://www.mixamo.com)
 
 ---
 
@@ -38,7 +38,7 @@ Finální úpravy a příprava scény pro herní engine.
 * **Animace:** Spojení stažených animací k jednomu modelu a příprava pro export.
 * **Level Design:** Vytvoření testovacího 3D světa.
 * **Kolize:** Veškerá geometrie prostředí byla připravena s kolizními sítěmi pomocí vlastního Python skriptu. Objekty využívají standardní příponu `_col`, kterou Godot Engine automaticky rozpozná a převede na fyzikální kolize.
-* **Web:** [blender.org](Screenshot\https://www.blender.org/)
+* **Web:** [blender.org](https://www.blender.org/)
 
 ---
 
@@ -146,13 +146,13 @@ Pokud chceš změnit citlivost myši, hledej v metodě `_unhandled_input` násob
 4. **Optimalizace**: Použití `_unhandled_input` je správná praxe – dovoluje UI (např. inventáři nebo menu) "zachytit" vstup dříve, než s ním pohne kamera.
 ---
 ## Screenshot
-![Make Human Community](Screenshot\MakeHuman.png)
+![Make Human Community](Screenshot/MakeHuman.png)
 ---
-![Mixamo](Screenshot\Mixamo.png)
+![Mixamo](Screenshot/Mixamo.png)
 ---
-![Blender Naked Girl](Screenshot\BlenderNakedGirl.png)
+![Blender Naked Girl](Screenshot/BlenderNakedGirl.png)
 ---
-![Blender World](Screenshot\BlenderWorld.png)
+![Blender World](Screenshot/BlenderWorld.png)
 ---
 
 **© Lubomír Tomandl - Angry Developer Studio**
