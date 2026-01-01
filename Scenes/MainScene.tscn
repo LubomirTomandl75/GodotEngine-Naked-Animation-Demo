@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://2m7ssn77342h"]
+[gd_scene load_steps=9 format=3 uid="uid://2m7ssn77342h"]
 
 [ext_resource type="Texture2D" uid="uid://bbqvovy3rwnmd" path="res://Assets/SkyBox.png" id="1_8gbba"]
 [ext_resource type="PackedScene" uid="uid://dkpl3oi25vcx" path="res://Scenes/Player.tscn" id="1_jjgbg"]
@@ -16,6 +16,13 @@ sky = SubResource("Sky_kry3j")
 ambient_light_source = 2
 ambient_light_color = Color(1, 1, 1, 1)
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_nhkr4"]
+viewport_path = NodePath("CSGBox3D/SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7rqgy"]
+resource_local_to_scene = true
+albedo_texture = SubResource("ViewportTexture_nhkr4")
+
 [node name="Node3D" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -32,9 +39,9 @@ light_energy = 0.98
 shadow_enabled = true
 sky_mode = 1
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="FPS" type="CanvasLayer" parent="."]
 
-[node name="FPSLabel" type="Label" parent="CanvasLayer"]
+[node name="FPSLabel" type="Label" parent="FPS"]
 offset_left = 24.0
 offset_top = 24.0
 offset_right = 91.0
@@ -45,9 +52,9 @@ theme_override_constants/outline_size = 4
 theme_override_font_sizes/font_size = 24
 text = "FPS: 0"
 
-[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+[node name="Copyright" type="CanvasLayer" parent="."]
 
-[node name="Label" type="Label" parent="CanvasLayer2"]
+[node name="Label" type="Label" parent="Copyright"]
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
@@ -60,3 +67,14 @@ offset_bottom = -9.0
 grow_horizontal = 0
 grow_vertical = 0
 text = "© Lubomír Tomandl - Angry Developer Studio"
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.992, 1.2, 0)
+size = Vector3(0.015, 1.5, 1)
+material = SubResource("StandardMaterial3D_7rqgy")
+
+[node name="SubViewport" type="SubViewport" parent="CSGBox3D"]
+size = Vector2i(1920, 1080)
+
+[node name="Camera3D" type="Camera3D" parent="CSGBox3D/SubViewport"]
+transform = Transform3D(-4.371139e-08, 0, 1, -1, -4.371139e-08, -4.371139e-08, 4.371139e-08, -1, 1.9106855e-15, 9.992, 1.2, 0)

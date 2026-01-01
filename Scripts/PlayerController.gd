@@ -9,7 +9,7 @@
 extends CharacterBody3D
 
 # --- Onready proměnné (Reference na uzly ve scéně) ---
-@onready var fps_label = $"../CanvasLayer/FPSLabel"      # Label pro zobrazení FPS
+@onready var fps_label = $"../FPS/FPSLabel"              # Label pro zobrazení FPS
 @onready var armature = $FergusonovaNaked                # Model postavy (pro rotaci ve směru pohybu)
 @onready var spring_arm_pivot = $SpringArmPivot          # Pivot pro horizontální rotaci kamery (Y)
 @onready var spring_arm = $SpringArmPivot/SpringArm3D    # Rameno kamery pro vertikální rotaci (X)
